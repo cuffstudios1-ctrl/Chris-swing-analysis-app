@@ -1,0 +1,2 @@
+import { describe,it,expect } from 'vitest'; import { userOwns, deleteSwingAssets } from '../lib/storage';
+describe('ownership',()=>{it('checks owner id',()=>{expect(userOwns('u1',{user_id:'u1'})).toBe(true);expect(userOwns('u1',{user_id:'u2'})).toBe(false)});it('blocks deletion for another user',async()=>{await expect(deleteSwingAssets('u1',{user_id:'u2',video_path:'u2/s.mp4'})).rejects.toThrow(/authorised/)})});
